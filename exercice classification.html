@@ -1,0 +1,168 @@
+Exercice - Méthodes de classification
+Théorique
+Question 1
+En utilisant un peu d’algèbre, prouvez que les deux formules de la slide 6 des notes de cours sont équivalentes. En d’autres termes, la représentation de la fonction logistique et la représentation logit du modèle de régression logistique sont équivalentes.
+
+Question 2
+Il a été précisé dans les notes de cours que classer une observation dans la classe pour laquelle la probabilité 
+ (fin slide 19) est la plus grande équivaut à classer une observation dans la classe pour laquelle 
+ (débt slide 20) est la plus grande. Prouvez que c’est le cas. En d’autres termes, en supposant que les observations de la k-ième classe sont tirées d’une distribution 
+, le classificateur de Bayes attribue une observation à la classe pour laquelle la fonction discriminante est maximisée.
+
+Exercice 3
+Ce problème concerne le modèle QDA, dans lequel les observations au sein de chaque classe sont tirées d’une distribution normale avec un vecteur moyen spécifique à la classe et une matrice de covariance spécifique à la classe. Nous considérons le cas simple où 
+ ; c’est-à-dire qu’il n’y a qu’une seule variable explicative (prédicteur)
+
+Supposons que nous ayons des classes 
+, et que si une observation appartient à la 
+-ième classe alors 
+ provient d’une distribution normale unidimensionnelle, 
+ . Rappelons que la fonction de densité pour la distribution normale unidimensionnelle est donnée en slide 19. Montrer que dans ce cas, le classificateur de Bayes n’est pas linéaire. Faites valoir qu’il est en fait quadratique.
+
+Question 4
+Lorsque le nombre de caractéristiques 
+ est grand, les performances de KNN (K nearest Neighbour) a tendance à se détériorer et d’autres approches locales qui effectuent des prédictions en utilisant uniquement des observations proches de l’observation de test pour laquelle une prédiction doit être faite. Ce phénomène est connu sous le nom de malédiction de la dimensionnalité, et il est lié au fait que les approches non paramétriques fonctionnent souvent mal lorsque 
+ est grand. Nous allons maintenant enquêter sur cette malédiction.
+
+Supposons que nous ayons un ensemble d’observations, chacune avec des mesures sur la caractéristique 
+, 
+. Nous supposons que 
+ est uniformément (également) distribué sur 
+. À chaque observation est associée une valeur de réponse. Supposons que nous souhaitions prédire la réponse d’une observation de test en utilisant uniquement les observations qui se situent à moins de 10 % de la plage de 
+ la plus proche de cette observation de test. Par exemple, afin de prédire la réponse pour une observation test avec 
+, nous utiliserons des observations comprises dans la plage 
+. En moyenne, quelle fraction des observations disponibles utiliserons-nous pour faire la prédiction ?
+
+Supposons maintenant que nous ayons un ensemble d’observations, chacune avec des mesures sur les entités 
+, 
+ et 
+. Nous supposons que 
+ sont uniformément distribués sur 
+. Nous souhaitons prédire la réponse d’une observation de test en utilisant uniquement les observations qui se situent à moins de 10 % de la plage de 
+ et à moins de 10 % de la plage de 
+ la plus proche de cette observation de test. Par exemple, afin de prédire la réponse pour une observation test avec 
+ et 
+, nous utiliserons des observations dans la plage 
+ pour 
+ et dans la plage 
+ pour 
+. En moyenne, quelle fraction des observations disponibles utiliserons-nous pour faire la prédiction ?
+
+Supposons maintenant que nous ayons un ensemble d’observations sur les predicteurs 
+. Encore une fois, les observations sont uniformément réparties sur chaque entité, et encore une fois, la valeur de chaque entité varie de 0 à 1. Nous souhaitons prédire la réponse d’une observation de test en utilisant des observations situées dans les 10 % de la plage de chaque entité qui sont les plus proches de cette observation de test. Quelle fraction des observations disponibles utiliserons-nous pour faire la prédiction ?
+
+En utilisant vos réponses aux parties (a)–(c), faites valoir qu’un inconvénient du KNN lorsque 
+ est grand est qu’il y a très peu d’observations d’entraînement « à proximité » d’une observation de test donnée.
+
+Supposons maintenant que nous souhaitions faire une prédiction pour une observation de test en créant un hypercube 
+-dimensionnel centré autour de l’observation de test qui contient, en moyenne, 10 % des observations d’entraînement. Pour 
+ et 
+, quelle est la longueur de chaque côté de l’hypercube ? Commentez votre réponse.
+
+Remarque : un hypercube est une généralisation d’un cube à un nombre arbitraire de dimensions. Lorsque 
+, un hypercube est simplement un segment de droite, lorsque 
+ c’est un carré, et quand 
+ c’est un cube à 100 dimensions.
+
+Question 5
+Nous examinons maintenant les différences entre LDA et QDA.
+
+Si la “vrai” règle de décision sur les données est linéaire, nous attendons-nous à ce que LDA ou QDA fonctionnent mieux sur l’ensemble d’entraînement ? Sur celui de test ?
+
+Si la “vrai” règle de décision sur les données n’est pas linéaire, nous attendons-nous à ce que LDA ou QDA fonctionnent mieux sur l’ensemble d’entraînement ? Sur celui de test ?
+
+En général, à mesure que la taille de l’échantillon 
+ augmente, nous attendons-nous à ce que la précision de la prédiction des tests de QDA par rapport à LDA s’améliore, diminue ou reste inchangée ? Pourquoi?
+
+Vrai ou faux : même si la règle de décision pour un problème donné est linéaire, nous obtiendrons probablement un taux d’erreur de test supérieur en utilisant QDA plutôt qu’en LDA, car QDA est suffisamment flexible pour modéliser une limite de décision linéaire. Justifiez votre réponse.
+
+Question 6
+Supposons que nous collections des données pour un groupe d’étudiants dans un cours de statistiques avec les variables 
+ heures étudiées, 
+ GPA de premier cycle et 
+ reçoivent un A (oui ou non). Nous ajustons une régression logistique et produisons un coefficient estimé, 
+, 
+, 
+.
+
+Estimez la probabilité qu’un étudiant qui étudie pendant 40 heures et qui a une moyenne cumulative de 3,5 au premier cycle obtienne un A dans la classe.
+
+De combien d’heures l’étudiant de la partie (a) aurait-il besoin pour étudier pour avoir 50 % de chances d’obtenir un A dans la classe ?
+
+Question 7
+Supposons que nous souhaitions prédire si une action donnée émettra un dividende cette année (« Oui » ou « Non ») sur la base de 
+, le pourcentage de bénéfice de l’année dernière. Nous examinons un grand nombre d’entreprises et découvrons que la valeur moyenne de 
+ pour les entreprises qui ont émis un dividende était de 
+, tandis que la moyenne pour celles qui ne l’ont pas fait était de 
+. De plus, la variance de 
+ pour ces deux ensembles d’entreprises était de 
+. Enfin, 80 % des entreprises ont distribué des dividendes. En supposant que 
+ suit une distribution normale, prédisez la probabilité qu’une entreprise verse un dividende cette année étant donné que son pourcentage de bénéfice était de 
+ l’année dernière.
+
+Indice : rappelez-vous que la fonction de densité pour une variable aléatoire normale est 
+ 
+. Vous devrez utiliser le théorème de Bayes.
+
+Question 8
+Supposons que nous prenions un ensemble de données, le divisons en ensembles d’entrainement et de test de taille égale, puis que nous essayions deux procédures de classification différentes. Nous utilisons d’abord la régression logistique et obtenons un taux d’erreur de 20 % sur les données d’entraînement et de 30 % sur les données de test. Ensuite, nous utilisons un 1 - KNN (c’est-à-dire 
+) et obtenons un taux d’erreur moyen (en moyenne sur les ensembles de données de test et d’entraînement) de 18 %. Sur la base de ces résultats, quelle méthode devrions-nous préférer utiliser pour la classification des nouvelles observations ? Pourquoi?
+
+Question 9
+Ce problème est lié aux cotes.
+
+En moyenne, quelle fraction de personnes ayant une probabilité de 0.37 de défaut de paiement par carte de crédit sera effectivement en défaut de paiement ?
+
+Supposons qu’une personne ait 16 % de chances de ne pas rembourser son paiement par carte de crédit. Quelles sont les chances qu’elle fasse défaut ?
+
+Pratique
+Exercice 1
+Il convient de répondre à cette question en utilisant l’ensemble de données « Weekly », qui fait partie du package « ISLR2 ». Ces données sont de nature similaire aux données « Smarket » du laboratoire de ce chapitre, sauf qu’elles contiennent 1 089 retours hebdomadaires sur 21 ans, du début de 1990 à la fin de 2010.
+
+Produisez des résumés numériques et graphiques des données « Weekly ». Est-ce que vous voyez des patterns apparaitre dans ces données?
+
+Utilisez l’ensemble de données complet pour effectuer une régression logistique avec « Direction » comme réponse et les cinq variables de retard plus « Volume » comme prédicteurs. Utilisez la fonction récapitulative pour imprimer les résultats. L’un des prédicteurs semble-t-il statistiquement significatif ? Si oui, lesquels?
+
+Calculez la matrice de confusion et la fraction globale des prédictions correctes. Expliquez ce que la matrice de confusion vous dit sur les types d’erreurs commises par la régression logistique.
+
+Ajustez maintenant le modèle de régression logistique en utilisant une période de données d’entraînement de 1990 à 2008, avec « Lag2 » comme seul prédicteur. Calculez la matrice de confusion et la fraction globale des prédictions correctes pour les données retenues (c’est-à-dire les données de 2009 et 2010).
+
+Refaite (d) en utilisant une LDA.
+
+Refaite (d) en utilisant une QDA.
+
+Refaite (d) en utilisant un KNN avec 
+.
+
+Refaite (d) en utilisant un modèle de Bayes naif.
+
+Laquelle de ces méthodes semble fournir les meilleurs résultats sur ces données ?
+
+Expérimentez différentes combinaisons de prédicteurs, y compris les transformations et interactions possibles, pour chacune des méthodes. Indiquez les variables, la méthode et la matrice de confusion associée qui semblent fournir les meilleurs résultats sur les données disponibles. Notez que vous devez également expérimenter les valeurs de 
+ dans le classificateur KNN.
+
+Question 2
+Dans ce problème, vous développerez un modèle pour prédire si une voiture donnée aura une consommation d’essence élevée ou faible, en fonction de l’ensemble de données « Auto ».
+
+Créez une variable binaire, mpg01, qui contient un 1 si mpg contient une valeur au-dessus de sa médiane, et un 0 si mpg contient une valeur en dessous de sa médiane. Vous pouvez calculer la médiane en utilisant la fonction median(). Notez que vous trouverez peut-être utile d’utiliser la fonction data.frame() pour créer un seul ensemble de données contenant à la fois mpg01 et les autres variables Auto.
+
+Explorer les données graphiquement afin d’étudier l’association entre mpg01 et les autres prédicteurs Laquelle des autres predicteurs semble la plus susceptible d’être utile pour prédire « mpg01 » ? Les nuages de points et les diagrammes en boîte peuvent être des outils utiles pour répondre à cette question. Décrivez vos découvertes.
+
+Separer le jeu de données en un jeu de données d’entrainement et un de test.
+
+Effectuez une LDA sur les données d’entraînement afin de prédire « mpg01 » en utilisant les variables qui semblaient les plus associées à « mpg01 » dans (b). Quelle est l’erreur de test du modèle obtenu ?
+
+Effectuez QDA sur les données d’entraînement afin de prédire « mpg01 » en utilisant les variables qui semblaient les plus associées à « mpg01 » dans (b). Quelle est l’erreur de test du modèle obtenu ?
+
+Effectuez une régression logistique sur les données d’entraînement afin de prédire « mpg01 » en utilisant les variables qui semblaient les plus associées à « mpg01 » dans (b). Quelle est l’erreur de test du modèle obtenu ?
+
+Effectuez un Bayes naïf sur les données d’entraînement afin de prédire « mpg01 » en utilisant les variables qui semblaient les plus associées à « mpg01 » dans (b). Quelle est l’erreur de test du modèle obtenu ?
+
+Effectuez KNN sur les données d’entraînement, avec plusieurs valeurs de 
+, afin de prédire mpg01. Utilisez uniquement les variables qui semblent les plus associées à mpg01 dans (b). Quelles erreurs de test obtenez-vous ? Quelle valeur de 
+ semble la plus performante sur cet ensemble de données ?
+
+Question 3
+À l’aide de l’ensemble de données « Boston », ajustez les modèles de classification afin de prédire si un secteur de recensement donné a un taux de criminalité supérieur ou inférieur à la médiane. Explorez les modèles de régression logistique, LDA, Bayes naïfs et KNN en utilisant divers sous-ensembles de prédicteurs. Décrivez vos découvertes.
+
+Indice : vous devrez créer vous-même la variable de réponse, en utilisant les variables contenues dans l’ensemble de données Boston.
